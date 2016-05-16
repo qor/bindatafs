@@ -20,7 +20,7 @@ type BindataFS struct {
 var AssetFS *BindataFS
 
 func init() {
-	AssetFS = &BindataFS{AssetFileSystem: &admin.AssetFileSystem{}, Path: "{{package_name}}"}
+	AssetFS = &BindataFS{AssetFileSystem: &admin.AssetFileSystem{}, Path: "{{package_path}}"}
 }
 
 func (assetFS *BindataFS) RegisterPath(path string) error {
