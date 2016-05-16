@@ -1,6 +1,7 @@
 package {{package_name}}
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -49,6 +50,7 @@ func (assetFS *BindataFS) Glob(pattern string) (matches []string, err error) {
 }
 
 func (assetFS *BindataFS) Compile() error {
+	fmt.Println("Compiling QOR templates...")
 	assetFS.copyFiles(filepath.Join(assetFS.Path, "templates"))
 
 	config := bindata.NewConfig()
@@ -63,6 +65,7 @@ func (assetFS *BindataFS) Compile() error {
 	config.Output = filepath.Join(assetFS.Path, "templates_bindatafs.go")
 	config.Prefix = filepath.Join(assetFS.Path, "templates")
 
+	defer os.Exit(0)
 	return bindata.Translate(config)
 }
 

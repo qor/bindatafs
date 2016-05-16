@@ -21,20 +21,20 @@ func main() {
 		os.Exit(1)
 	}
 
+	fmt.Println("Initalizing BindataFS...")
+
 	destPath := args[0]
 	funcMap := map[string]interface{}{
 		"package_path": func() string {
-			fmt.Println(destPath)
 			return destPath
 		},
 		"package_name": func() string {
-			fmt.Println(path.Base(destPath))
 			return path.Base(destPath)
 		},
 	}
 
 	for _, gopath := range strings.Split(os.Getenv("GOPATH"), ";") {
-		sourcePath := filepath.Join(gopath, "src/github.com/qor/admin/bindatafs/templates")
+		sourcePath := filepath.Join(gopath, "src/github.com/qor/bindatafs/templates")
 		err := filepath.Walk(sourcePath, func(path string, info os.FileInfo, err error) error {
 			if err == nil {
 				var relativePath = strings.TrimPrefix(path, sourcePath)
