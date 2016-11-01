@@ -33,9 +33,14 @@ func main() {
 		},
 	}
 
+	hasExists := false
 	for _, gopath := range strings.Split(os.Getenv("GOPATH"), string(os.PathListSeparator)) {
 		sourcePath := filepath.Join(gopath, "src/github.com/qor/bindatafs/templates")
-		err := filepath.Walk(sourcePath, func(path string, info os.FileInfo, err error) error {
+		_, err := os.Stat(sourcePath)
+		if err == nil {
+			hasExists = true
+		}
+		err = filepath.Walk(sourcePath, func(path string, info os.FileInfo, err error) error {
 			if err == nil {
 				var relativePath = strings.TrimPrefix(path, sourcePath)
 
@@ -61,6 +66,11 @@ func main() {
 			}
 			return err
 		})
+
+		if hasExists && err == nil {
+			fmt.Printf("copy from %s to %s\n", sourcePath, destPath)
+			break
+		}
 
 		if err != nil {
 			fmt.Println("failed to copy files:", err)
