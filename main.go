@@ -33,7 +33,7 @@ func main() {
 		},
 	}
 
-	for _, gopath := range strings.Split(os.Getenv("GOPATH"), ";") {
+	for _, gopath := range strings.Split(os.Getenv("GOPATH"), string(os.PathListSeparator)) {
 		sourcePath := filepath.Join(gopath, "src/github.com/qor/bindatafs/templates")
 		err := filepath.Walk(sourcePath, func(path string, info os.FileInfo, err error) error {
 			if err == nil {
