@@ -4,6 +4,10 @@ Compile qor templates into binary with [go-bindata](https://github.com/jteeuwen/
 
 [![GoDoc](https://godoc.org/github.com/qor/bindatafs?status.svg)](https://godoc.org/github.com/qor/bindatafs)
 
+## Documentation
+
+<https://doc.getqor.com/plugins/bindata.html>
+
 ## Usage
 
 Install BindataFS
