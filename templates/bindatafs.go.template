@@ -92,7 +92,7 @@ func (assetFS *bindataFS) Compile() error {
 	config.Prefix = filepath.Join(assetFS.Path, "templates")
 	config.NoMetadata = true
 
-	{{if exit_after_compile}}defer os.Exit(0){{end -}}
+	{{if exit_after_compile}}defer os.Exit(0){{end}}
 	return bindata.Translate(config)
 }
 
