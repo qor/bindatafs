@@ -13,7 +13,9 @@ import (
 )
 
 func main() {
+	exitAfterCompile := flag.Bool("exit-after-compile", true, "Exit after compile templates")
 	flag.Parse()
+
 	args := flag.Args()
 
 	if len(args) == 0 {
@@ -30,6 +32,9 @@ func main() {
 		},
 		"package_name": func() string {
 			return path.Base(destPath)
+		},
+		"exit_after_compile": func() bool {
+			return *exitAfterCompile
 		},
 	}
 
