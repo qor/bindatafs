@@ -10,6 +10,8 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+
+	"github.com/qor/qor/utils"
 )
 
 func main() {
@@ -39,7 +41,7 @@ func main() {
 	}
 
 	hasExists := false
-	for _, gopath := range strings.Split(os.Getenv("GOPATH"), string(os.PathListSeparator)) {
+	for _, gopath := range utils.GOPATH() {
 		sourcePath := filepath.Join(gopath, "src/github.com/qor/bindatafs/templates")
 		_, err := os.Stat(sourcePath)
 		if err == nil {
