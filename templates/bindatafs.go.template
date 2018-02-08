@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jteeuwen/go-bindata"
+	"github.com/containous/go-bindata"
 	"github.com/qor/assetfs"
 )
 

@@ -1,6 +1,6 @@
 # BindataFS
 
-BindataFS could be used to compile templates into binary utilizing [go-bindata](https://github.com/jteeuwen/go-bindata)
+BindataFS could be used to compile templates into binary utilizing [go-bindata](https://github.com/containous/go-bindata)
 
 [![GoDoc](https://godoc.org/github.com/qor/bindatafs?status.svg)](https://godoc.org/github.com/qor/bindatafs)
 
