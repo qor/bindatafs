@@ -16,6 +16,8 @@ Initialize BindataFS for your project, set the path you want to store BindataFS 
 $ bindatafs config/bindatafs
 ```
 
+Note that the program searches for templates in the `$GOPATH + src/github.com/qor/bindatafs/templates`. As a result, if using *gomodules* initialization will throw 404 errors. The recommended solution is to switch off go modules before running above commands and then switch it back on later.
+
 ## Usage
 
 ```go
