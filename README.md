@@ -6,8 +6,9 @@ BindataFS could be used to compile templates into binary utilizing [go-bindata](
 
 ## Install [BindataFS](https://github.com/qor/bindatafs)
 
+If you have Go Modules on then call the following command from a non-source Go Lang code directory (e.g., your home directory) or else the next step will fail
 ```sh
-$ go get -u -f github.com/qor/bindatafs/...
+$ go get -u -f github.com/qor/bindatafs/
 ```
 
 Initialize BindataFS for your project, set the path you want to store BindataFS related files, e.g. `config/bindatafs`:
