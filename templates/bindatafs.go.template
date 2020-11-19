@@ -161,16 +161,18 @@ func (assetFS *bindataFS) FileServer(dir http.Dir, assetPaths ...string) http.Ha
 }
 
 func copyFiles(templatesPath string, viewPaths []viewPath) {
+	sep := string(os.PathSeparator)
 	for i := len(viewPaths) - 1; i >= 0; i-- {
 		pth := viewPaths[i]
 		filepath.Walk(pth.Dir, func(path string, info os.FileInfo, err error) error {
 			if err == nil {
-				var relativePath = strings.TrimPrefix(strings.TrimPrefix(path, pth.Dir), "/")
+				var relativePath = strings.TrimPrefix(strings.TrimPrefix(path, pth.Dir), sep)
 
 				if len(pth.AssetPaths) > 0 {
 					included := false
 					for _, assetPath := range pth.AssetPaths {
-						if strings.HasPrefix(relativePath, strings.Trim(assetPath, "/")+"/") || relativePath == strings.Trim(assetPath, "/") {
+						p := strings.Trim(assetPath, sep)
+						if strings.HasPrefix(relativePath, p+sep) || relativePath == p {
 							included = true
 							break
 						}
